@@ -1,0 +1,144 @@
+{
+    "name": "Prompter Skills",
+    "description": "A collection of prompt engineering skills and workflows.",
+    "items": [
+        {
+            "name": "ai-humanizer",
+            "path": "skills/ai-humanizer",
+            "type": "skill",
+            "description": "Refine content to be conversational, friendly, and undetectable as AI."
+        },
+        {
+            "name": "api-contract-generator",
+            "path": "skills/api-contract-generator",
+            "type": "skill",
+            "description": "Generate OpenAPI/Swagger API contracts from PRDs."
+        },
+        {
+            "name": "design-system",
+            "path": "skills/design-system",
+            "type": "skill",
+            "description": "Create a comprehensive design system with tokens, components, and guidelines."
+        },
+        {
+            "name": "document-explainer",
+            "path": "skills/document-explainer",
+            "type": "skill",
+            "description": "Explain complex documents or code in simple, easy-to-understand terms."
+        },
+        {
+            "name": "epic-generator",
+            "path": "skills/epic-generator",
+            "type": "skill",
+            "description": "Generate detailed Epics from high-level product briefs or requirements."
+        },
+        {
+            "name": "epic-single",
+            "path": "skills/epic-single",
+            "type": "skill",
+            "description": "Generate a single, detailed Epic from a specific requirement."
+        },
+        {
+            "name": "erd-generator",
+            "path": "skills/erd-generator",
+            "type": "skill",
+            "description": "Create Entity Relationship Diagrams (ERD) from data requirements."
+        },
+        {
+            "name": "fsd-generator",
+            "path": "skills/fsd-generator",
+            "type": "skill",
+            "description": "Generate a Functional Specification Document (FSD) for a feature."
+        },
+        {
+            "name": "prd-agent-generator",
+            "path": "skills/prd-agent-generator",
+            "type": "skill",
+            "description": "Create a Product Requirements Document (PRD) specifically for AI Agents."
+        },
+        {
+            "name": "prd-generator",
+            "path": "skills/prd-generator",
+            "type": "skill",
+            "description": "Generate a comprehensive Product Requirements Document (PRD) for software features."
+        },
+        {
+            "name": "product-brief",
+            "path": "skills/product-brief",
+            "type": "skill",
+            "description": "Create a high-level Product Brief to outline project goals and scope."
+        },
+        {
+            "name": "qa-test-scenario",
+            "path": "skills/qa-test-scenario",
+            "type": "skill",
+            "description": "Generate comprehensive QA test scenarios and test cases."
+        },
+        {
+            "name": "skill-creator",
+            "path": "skills/skill-creator",
+            "type": "skill",
+            "description": "Create a new skill for the Prompter system following standard conventions."
+        },
+        {
+            "name": "story-generator",
+            "path": "skills/story-generator",
+            "type": "skill",
+            "description": "Generate detailed User Stories from Epics or requirements."
+        },
+        {
+            "name": "story-single",
+            "path": "skills/story-single",
+            "type": "skill",
+            "description": "Generate a single, detailed User Story with acceptance criteria."
+        },
+        {
+            "name": "tdd-generator",
+            "path": "skills/tdd-generator",
+            "type": "skill",
+            "description": "Generate a Test-Driven Development (TDD) plan and corresponding test code."
+        },
+        {
+            "name": "tdd-lite-generator",
+            "path": "skills/tdd-lite-generator",
+            "type": "skill",
+            "description": "Generate a lightweight TDD plan for smaller changes or features."
+        },
+        {
+            "name": "wireframe-generator",
+            "path": "skills/wireframe-generator",
+            "type": "skill",
+            "description": "Create wireframe descriptions or boilerplate code for UI visualization."
+        },
+        {
+            "name": "project-kickoff",
+            "path": "workflows/project-kickoff.md",
+            "type": "workflow",
+            "description": "Interactive interview to generate Product Brief, Design System, Wireframes, and TDD."
+        },
+        {
+            "name": "create-product-brief",
+            "path": "workflows/create-product-brief.md",
+            "type": "workflow",
+            "description": "Interactive interview to generate a Product Brief."
+        },
+        {
+            "name": "create-design-system",
+            "path": "workflows/create-design-system.md",
+            "type": "workflow",
+            "description": "Interactive interview to generate a Design System."
+        },
+        {
+            "name": "create-wireframes",
+            "path": "workflows/create-wireframes.md",
+            "type": "workflow",
+            "description": "Interactive interview to generate Wireframes."
+        },
+        {
+            "name": "create-tdd",
+            "path": "workflows/create-tdd.md",
+            "type": "workflow",
+            "description": "Interactive interview to generate a Technical Design Document (TDD)."
+        }
+    ]
+}
