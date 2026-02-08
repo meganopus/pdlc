@@ -1,6 +1,6 @@
-# Prompter Skills
+# PDLC
 
-A [Mountd](https://github.com/meganopus/mountd) compatible comprehensive collection of professional-grade AI skills and workflows based off [Propmpter](https://github.com/Dedesfr/Prompter). These skills help you generate high-quality project documentation, from Product Briefs to Technical Design Documents.
+A [Mountd](https://github.com/meganopus/mountd) compatible comprehensive collection of professional-grade AI skills and workflows based off [Prompter](https://github.com/Dedesfr/Prompter). These skills help you generate high-quality project documentation, from Product Briefs to Technical Design Documents.
 
 ## Usage
 
@@ -10,7 +10,7 @@ You can use these skills directly with `mountd` without installing anything glob
 
 ```bash
 # Run the interactive project kickoff interview
-npx mountd meganopus/Prompter
+npx mountd meganopus/pdlc
 
 # Or if you have the repo cloned locally
 npx mountd
