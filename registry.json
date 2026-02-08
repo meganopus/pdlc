@@ -3,6 +3,37 @@
     "description": "A collection of prompt engineering skills and workflows.",
     "items": [
         {
+            "name": "kickoff-heavy-bundle",
+            "type": "bundle",
+            "description": "Full enterprise project kickoff: Product Brief, PRD, Design System, ERD, API Contract, FSD, TDD, and workflows.",
+            "includes": [
+                "product-brief",
+                "prd-generator",
+                "design-system",
+                "erd-generator",
+                "api-contract-generator",
+                "fsd-generator",
+                "tdd-generator",
+                "wireframe-generator",
+                "epic-generator",
+                "story-generator",
+                "project-kickoff-heavy"
+            ]
+        },
+        {
+            "name": "kickoff-light-bundle",
+            "type": "bundle",
+            "description": "Lean startup project kickoff: Product Brief, PRD, Design System, Wireframes, and merged TDD.",
+            "includes": [
+                "product-brief",
+                "prd-generator",
+                "design-system",
+                "wireframe-generator",
+                "tdd-generator",
+                "project-kickoff-light"
+            ]
+        },
+        {
             "name": "ai-humanizer",
             "path": "skills/ai-humanizer",
             "type": "skill",
@@ -96,7 +127,7 @@
             "name": "tdd-generator",
             "path": "skills/tdd-generator",
             "type": "skill",
-            "description": "Generate a Test-Driven Development (TDD) plan and corresponding test code."
+            "description": "Generate a Technical Design Document (TDD) for features."
         },
         {
             "name": "tdd-lite-generator",
@@ -111,10 +142,16 @@
             "description": "Create wireframe descriptions or boilerplate code for UI visualization."
         },
         {
-            "name": "project-kickoff",
-            "path": "workflows/project-kickoff.md",
+            "name": "project-kickoff-heavy",
+            "path": "workflows/project-kickoff-heavy.md",
             "type": "workflow",
-            "description": "Interactive interview to generate Product Brief, Design System, Wireframes, and TDD."
+            "description": "HEAVY project kickoff for enterprise, platform, regulated, or multi-team projects."
+        },
+        {
+            "name": "project-kickoff-light",
+            "path": "workflows/project-kickoff-light.md",
+            "type": "workflow",
+            "description": "LIGHT project kickoff for startups, MVPs, internal tools, and fast-iteration projects."
         },
         {
             "name": "create-product-brief",
