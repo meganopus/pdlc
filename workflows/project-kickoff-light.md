@@ -26,24 +26,28 @@ These are created **once** in a lean format.
 1.  **Interview**: Quick product overview.
     *   *Question*: "What is the product, who is it for, and what problem does it solve?"
 2.  **Generate**: 1-page Product Brief via `skills/product-brief/SKILL.md`.
+3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 2: PRD (Lean, Outcome-Focused)
 
 1.  **Interview**: Focus on outcomes, not exhaustive requirements.
     *   *Question*: "What are the 3-5 key outcomes this product must achieve?"
 2.  **Generate**: Lean PRD via `skills/prd-generation/SKILL.md` (short mode if available).
+3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 3: Design System (Basic or Borrowed)
 
 1.  **Interview**: Quick visual direction.
     *   *Question*: "Are you using an existing design system (e.g., Tailwind, Material)? If not, describe the vibe in 3 words."
 2.  **Generate**: Basic tokens via `skills/design-system/SKILL.md` or reference existing framework.
+3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 4: API Guidelines (Not Full Contracts)
 
 1.  **Interview**: Minimal API conventions.
     *   *Question*: "What auth method (JWT, API key)? What's your error format?"
 2.  **Document**: Brief `docs/api-guidelines.md` (1 page max).
+3.  **Approve**: Wait for user approval before proceeding.
 
 ---
 
@@ -55,19 +59,24 @@ Documentation is streamlined — FSD and TDD are **combined**.
 
 1.  **Interview**: High-level feature scope and user needs.
     *   *Question*: "What is the feature and what are the 3-5 key user stories?"
-2.  **Generate**: Create `docs/features/[feature-name]/epic-and-stories.md`.
+2.  **Generate**: Execute `skills/epic-generator/SKILL.md` (and use `skills/story-generator/SKILL.md` for stories).
+    *   Output: `docs/features/[feature-name]/epic-and-stories.md`.
+3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 6: UI Wireframes
 
 1.  **Interview**: Key screens only.
     *   *Question*: "What are the 2-3 critical screens for this feature?"
 2.  **Generate**: Execute `skills/wireframe-generator/SKILL.md`.
+3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 7: API Contract (Only if External/Critical)
 
 1.  **Check**: Is this API consumed externally or is it critical?
     *   If **No**: Skip this step. Document endpoints inline in the Tech Spec.
-    *   If **Yes**: Create `docs/features/[feature-name]/api-contract.md`.
+    *   If **Yes**: Execute `skills/api-contract-generator/SKILL.md`.
+        *   Output: `docs/features/[feature-name]/api-contract.md`.
+4.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 8: Combined FSD + TDD (Tech Spec)
 
@@ -82,11 +91,13 @@ This is the core document — **FSD and TDD merged into one**.
     - Technical approach (architecture, patterns).
 3.  **Generate**: Execute `skills/tdd-generator/SKILL.md` in **LIGHT mode**.
     *   Output: `docs/features/[feature-name]/tech-spec.md` (~3 pages).
+4.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 9: Sprint Stories
 
-1.  **Generate**: Break Tech Spec into sprint-ready stories.
+1.  **Generate**: Break Tech Spec into sprint-ready stories via `skills/story-generator/SKILL.md`.
 2.  **Output**: Append to or create `docs/features/[feature-name]/stories.md`.
+3.  **Approve**: Wait for user approval before completion.
 
 ---
 

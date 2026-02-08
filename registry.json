@@ -17,7 +17,8 @@
                 "wireframe-generator",
                 "epic-generator",
                 "story-generator",
-                "project-kickoff-heavy"
+                "project-kickoff-heavy",
+                "add-feature-heavy"
             ]
         },
         {
@@ -30,7 +31,8 @@
                 "design-system",
                 "wireframe-generator",
                 "tdd-generator",
-                "project-kickoff-light"
+                "project-kickoff-light",
+                "add-feature-light"
             ]
         },
         {
@@ -176,6 +178,24 @@
             "path": "workflows/create-tdd.md",
             "type": "workflow",
             "description": "Interactive interview to generate a Technical Design Document (TDD)."
+        },
+        {
+            "name": "add-feature-heavy",
+            "path": "workflows/add-feature-heavy.md",
+            "type": "workflow",
+            "description": "HEAVY feature addition documentation suite."
+        },
+        {
+            "name": "add-feature-light",
+            "path": "workflows/add-feature-light.md",
+            "type": "workflow",
+            "description": "LIGHT feature addition (Tech Spec approach)."
+        },
+        {
+            "name": "fix-typechecks",
+            "path": "workflows/fix-typechecks.md",
+            "type": "workflow",
+            "description": "Systematic fix-verify-confirm loop for resolving TypeScript errors."
         }
     ]
 }
