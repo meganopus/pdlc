@@ -60,7 +60,7 @@ Documentation is streamlined — FSD and TDD are **combined**.
 1.  **Interview**: High-level feature scope and user needs.
     *   *Question*: "What is the feature and what are the 3-5 key user stories?"
 2.  **Generate**: Execute `skills/epic-generator/SKILL.md` (and use `skills/story-generator/SKILL.md` for stories).
-    *   Output: `docs/features/[feature-name]/epic-and-stories.md`.
+    *   Output: `docs/features/[feature-name]/epic.md` and individual `CODE-` story files.
 3.  **Approve**: Wait for user approval before proceeding.
 
 ## Step 6: UI Wireframes
@@ -96,7 +96,8 @@ This is the core document — **FSD and TDD merged into one**.
 ## Step 9: Sprint Stories
 
 1.  **Generate**: Break Tech Spec into sprint-ready stories via `skills/story-generator/SKILL.md`.
-2.  **Output**: Append to or create `docs/features/[feature-name]/stories.md`.
+2.  **Output**: Create a directory of individual story files at `docs/features/[feature-name]/stories/`.
+    *   Naming convention: `CODE-[XXX]-[title].md`.
 3.  **Approve**: Wait for user approval before completion.
 
 ---

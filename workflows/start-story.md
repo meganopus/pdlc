@@ -11,7 +11,7 @@ Use this workflow when you're ready to begin implementing a specific story. It a
 ## Step 1: Identify the Story
 
 1.  **Ask**: "Which story are you working on? Provide the story title or ID."
-2.  **Locate**: Find the story in `docs/features/[feature-name]/stories.md`.
+2.  **Locate**: Find the story file in `docs/features/[feature-name]/stories/` (e.g., `CODE-001.md`).
 3.  **Confirm**: Display the story details and confirm this is the correct story.
 4.  **Approve**: Wait for user approval before proceeding.
 
@@ -24,7 +24,7 @@ Automatically read and understand the following documents for the feature:
 ### Required Documents
 1.  **Design System**: Read `docs/design-system.md` for UI/styling guidelines.
 2.  **Wireframes**: Read `docs/features/[feature-name]/wireframes.md` for screen layouts and user flows.
-3.  **Stories**: Read `docs/features/[feature-name]/stories.md` to understand all related stories and dependencies.
+3.  **Stories**: Read all files in `docs/features/[feature-name]/stories/` to understand context and dependencies.
 4.  **TDD (Technical Design Document)**: Read `docs/features/[feature-name]/tdd.md` for architecture, data flows, and implementation guidance.
 
 ### Optional Documents (if available)
@@ -54,6 +54,12 @@ Provide a brief summary to the user:
 1.  **Ask**: "Ready to start? Any questions before we begin coding?"
 2.  **Clarify**: Address any questions or ambiguities.
 3.  **Implement**: Start coding with full context loaded.
+4.  **Error Handling Protocol (CRITICAL)**:
+    *   If you encounter an error and fail to fix it **3 times**:
+        *   **STOP** immediately. Do not attempt a 4th blind fix.
+        *   **Escalate** to the user.
+        *   **Report**: Provide the full error log, the attempted fixes, and relevant code.
+        *   **Ask**: Request specific guidance, reference code, or a manual fix from the user.
 
 ---
 

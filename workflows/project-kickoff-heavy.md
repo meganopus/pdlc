@@ -134,7 +134,8 @@ These are created **for each feature or module**.
 ## Step 13: Sprint Stories
 
 1.  **Generate**: Break TDD into sprint-ready, estimated stories via `skills/story-generator/SKILL.md`.
-2.  **Output**: Create `docs/features/[feature-name]/stories.md`.
+2.  **Output**: Create a directory of individual story files at `docs/features/[feature-name]/stories/`.
+    *   Ensure each story is in its own markdown file (e.g., `CODE-001-login.md`).
 3.  **Approve**: Wait for user approval before completion.
 
 ---
@@ -144,3 +145,4 @@ These are created **for each feature or module**.
 *   Notify the user that all documents have been generated.
 *   Provide a summary of files created and their locations.
 *   Remind user that ERD changes are explicit and audited, and stories are written *after* FSD/TDD approval.
+
