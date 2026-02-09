@@ -1,55 +1,115 @@
 # PDLC
 
-A [Mountd](https://github.com/meganopus/mountd) compatible comprehensive collection of professional-grade AI skills and workflows based off [Prompter](https://github.com/Dedesfr/Prompter). These skills help you generate high-quality project documentation, from Product Briefs to Technical Design Documents.
+**Stop hallucinating architecture. Start shipping with clarity.**
 
-## Usage
+PDLC gives your AI coding assistant a structured kickoff workflow that transforms vague ideas into production-ready documentation—Product Briefs, PRDs, Design Systems, ERDs, and TDDs—before a single line of code is written.
 
-### Using with Mountd
-
-You can use these skills directly with `mountd` without installing anything globally.
+## ⚡ Quick Start
 
 ```bash
-# Run the interactive project kickoff interview
-npx mountd meganopus/pdlc
+# Install the kickoff bundle that fits your project
+npx mountd add meganopus/pdlc kickoff-light-bundle  # For MVPs & startups
+npx mountd add meganopus/pdlc kickoff-heavy-bundle  # For enterprise projects
 
-# Or if you have the repo cloned locally
-npx mountd
+# Then run the interactive kickoff workflow
+/project-kickoff-light   # or /project-kickoff-heavy
 ```
 
-### Available Workflows
+## 🎯 Why Kickoff Bundles?
 
-This repository includes interactive workflows that act as an "Interview Mode" to guide you through document creation.
+AI coding assistants are powerful, but they often start building before understanding the full picture. The result? Constant refactoring, missed requirements, and technical debt from day one.
 
-- **🚀 Project Kickoff** (`project-kickoff`): A comprehensive end-to-end interview that generates a Product Brief, Design System, Wireframes, and TDD in one go.
-- **📄 Create Product Brief** (`create-product-brief`): Generates a high-level executive summary and product definition.
-- **🎨 Create Design System** (`create-design-system`): Defines your visual identity, tokens, and components.
-- **📐 Create Wireframes** (`create-wireframes`): Generates detailed UI/UX wireframe descriptions.
-- **⚙️ Create TDD** (`create-tdd`): Generates a complete Technical Design Document.
+**Kickoff Bundles solve this by:**
 
-## Skills
+| Problem | Solution |
+|---------|----------|
+| 🤯 "The AI kept changing its approach mid-feature" | Locks in architecture decisions upfront via TDD |
+| 📝 "We have no documentation" | Auto-generates Product Brief, PRD, and Design System |
+| 🔄 "Every new feature breaks assumptions" | Creates ERD and API Contracts before implementation |
+| 🎨 "The UI is inconsistent everywhere" | Establishes Design Tokens and Wireframe standards |
 
-This repository contains the following individual skills that can be used via `mountd` or manually:
+## 📦 Choose Your Bundle
+
+### `kickoff-light-bundle` — Move Fast, Ship Smart
+*For: MVPs, startups, internal tools, hackathons*
+
+One workflow installs everything you need to go from idea → implementation:
+- **Product Brief** — Define your vision and success metrics
+- **PRD** — Detailed requirements with acceptance criteria
+- **Design System** — Tokens, typography, and component guidelines
+- **Wireframes** — UI structure before pixels
+- **TDD** — Technical Design Document with architecture decisions
+
+```bash
+npx mountd add meganopus/pdlc kickoff-light-bundle
+```
+
+---
+
+### `kickoff-heavy-bundle` — Enterprise-Grade Planning
+*For: Regulated industries, multi-team projects, platform engineering*
+
+Everything in Light, plus:
+- **ERD Generator** — Entity Relationship Diagrams for data modeling
+- **API Contract Generator** — OpenAPI specs before implementation
+- **FSD Generator** — Functional Specification Documents
+- **Epic & Story Generators** — Break down features into trackable work
+
+```bash
+npx mountd add meganopus/pdlc kickoff-heavy-bundle
+```
+
+## 🔧 Additional Skills & Workflows
+
+Beyond the kickoff bundles, PDLC includes standalone skills you can cherry-pick as needed:
+
+<details>
+<summary><strong>📚 All Available Skills</strong></summary>
 
 | Skill | Description |
 |-------|-------------|
-| **ai-humanizer** | Refine content to be conversational, friendly, and undetectable as AI. |
-| **api-contract-generator** | Generate OpenAPI/Swagger API contracts from PRDs. |
-| **design-system** | Create a comprehensive design system with tokens, components, and guidelines. |
-| **document-explainer** | Explain complex documents or code in simple terms. |
-| **epic-generator** | Generate detailed Epics from high-level requirements. |
-| **epic-single** | Generate a single, detailed Epic. |
-| **erd-generator** | Create Entity Relationship Diagrams (ERD). |
-| **fsd-generator** | Generate a Functional Specification Document (FSD). |
-| **prd-agent-generator** | Create a PRD specifically for AI Agents. |
-| **prd-generator** | Generate a comprehensive PRD for software features. |
-| **product-brief** | Create a high-level Product Brief. |
-| **qa-test-scenario** | Generate comprehensive QA test scenarios. |
-| **skill-creator** | Create a new skill for the Prompter system. |
-| **story-generator** | Generate detailed User Stories. |
-| **story-single** | Generate a single, detailed User Story. |
-| **tdd-generator** | Generate a Test-Driven Development (TDD) plan. |
-| **tdd-lite-generator** | Generate a lightweight TDD plan. |
-| **wireframe-generator** | Create wireframe descriptions for UI visualization. |
+| `ai-humanizer` | Refine content to be conversational and undetectable as AI |
+| `document-explainer` | Explain complex documents or code in simple terms |
+| `epic-single` | Generate a single, detailed Epic |
+| `story-single` | Generate a single, detailed User Story |
+| `prd-agent-generator` | Create PRDs specifically for AI Agents |
+| `qa-test-scenario` | Generate comprehensive QA test scenarios |
+| `tdd-lite-generator` | Lightweight TDD for smaller changes |
+| `skill-creator` | Create new skills for the PDLC system |
+
+**Install individual skills:**
+```bash
+npx mountd add meganopus/pdlc skill-name
+```
+
+</details>
+
+<details>
+<summary><strong>🔄 All Available Workflows</strong></summary>
+
+| Workflow | Description |
+|----------|-------------|
+| `/create-product-brief` | Interactive interview for Product Brief |
+| `/create-design-system` | Interactive interview for Design System |
+| `/create-wireframes` | Interactive interview for Wireframes |
+| `/create-tdd` | Interactive interview for TDD |
+| `/add-feature-light` | Add features with Tech Spec approach |
+| `/add-feature-heavy` | Full documentation suite for new features |
+| `/fix-typechecks` | Systematic TypeScript error resolution |
+
+**Install individual workflows:**
+```bash
+npx mountd add meganopus/pdlc workflow-name
+```
+
+</details>
+
+## 📖 How It Works
+
+1. **Install a bundle** → Skills and workflows are copied to your `.agent/` directory
+2. **Run the kickoff workflow** → Answer questions about your project
+3. **Review generated docs** → Product Brief, PRD, Design System, etc.
+4. **Start building** → Your AI assistant now has full context
 
 ## License
 

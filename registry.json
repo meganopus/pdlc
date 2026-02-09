@@ -18,7 +18,8 @@
                 "epic-generator",
                 "story-generator",
                 "project-kickoff-heavy",
-                "add-feature-heavy"
+                "add-feature-heavy",
+                "start-story"
             ]
         },
         {
@@ -32,7 +33,8 @@
                 "wireframe-generator",
                 "tdd-generator",
                 "project-kickoff-light",
-                "add-feature-light"
+                "add-feature-light",
+                "start-story"
             ]
         },
         {
@@ -196,6 +198,12 @@
             "path": "workflows/fix-typechecks.md",
             "type": "workflow",
             "description": "Systematic fix-verify-confirm loop for resolving TypeScript errors."
+        },
+        {
+            "name": "start-story",
+            "path": "workflows/start-story.md",
+            "type": "workflow",
+            "description": "Start working on a story with all relevant context documents auto-loaded."
         }
     ]
 }
