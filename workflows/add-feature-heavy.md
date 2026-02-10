@@ -1,73 +1,35 @@
 ---
-description: HEAVY complexity feature addition — generates full documentation suite for new features in an existing enterprise or platform project.
+description: HEAVY complexity feature addition — generates documentation suite consistent with the project kickoff heavy workflow.
 ---
 
 # Add Feature Workflow (HEAVY)
 
 This workflow is for adding new features or modules to an **enterprise, platform, regulated, or multi-team project**. It ensures consistent documentation standards for everything added post-kickoff.
 
-## Step 1: Feature PRD Addendum
+## Step 1: Feature PRD Addendum & PRD
 
-1.  **Interview**: Scope the specific feature.
-    *   *Question*: "What is the feature name and its specific requirements?"
-2.  **Generate**: Execute `skills/prd-generator/SKILL.md`.
-    *   Output: `docs/features/[feature-name]/prd-addendum.md`.
-3.  **Approve**: Wait for user approval before proceeding.
+1.  **Read**: Load `skills/prd-generator/SKILL.md` for interview guidance.
+2.  **Context**: Read `docs/prd.md` to understand the current product state and constraints.
+3.  **Interview**: Follow the skill's data-gathering process, scoped to this specific feature.
+4.  **Generate**: Execute the skill to produce `docs/features/[feature-name]/prd-addendum.md`.
+5.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
 
-## Step 2: Feature Epic(s)
+## Step 2: Sprint Stories
 
-1.  **Interview**: Break down into high-level deliverables.
-2.  **Generate**: Execute `skills/epic-generator/SKILL.md`.
-    *   Output: `docs/features/[feature-name]/epic.md`.
-3.  **Approve**: Wait for user approval before proceeding.
+1.  **Read**: Load `skills/story-generator/SKILL.md` for guidance.
+2.  **Generate**: Execute the skill to break FSD/Requirements into sprint-ready, estimated stories.
+3.  **Output**: Create a directory of individual story files at `docs/features/[feature-name]/stories/`.
+    *   Ensure each story is in its own markdown file (e.g., `VORA-001-login.md`).
+4.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed after generating fixes. If revisions are requested, generate them and then STOP again for approval.
 
-## Step 3: UI Wireframes
+## Step 3: Global Artifacts Integration
 
-1.  **Interview**: Detail the key screens.
-    *   *Question*: "Walk me through the user flow for this feature."
-2.  **Gather Details**: Screens, data fields, user actions, layout preferences.
-3.  **Generate**: Execute `skills/wireframe-generator/SKILL.md` for the feature.
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 4: ERD Extension Document
-
-1.  **Interview**: Identify new or changed entities.
-    *   *Question*: "What new entities or fields does this feature introduce?"
-2.  **Generate**: Execute `skills/erd-generator/SKILL.md` (Delta only).
-    *   Output: `docs/features/[feature-name]/erd-extension.md`.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 5: API Contract (Versioned)
-
-1.  **Interview**: Define endpoints for the feature.
-    *   *Question*: "What new API endpoints are required?"
-2.  **Gather Details**: HTTP methods, paths, request/response schemas, auth requirements.
-3.  **Review**: API contracts must be reviewed before implementation.
-4.  **Generate**: Execute `skills/api-contract-generator/SKILL.md`.
-    *   Output: `docs/features/[feature-name]/api-contract.md`.
-5.  **Approve**: Wait for user approval before proceeding.
-
-## Step 6: Functional Specification Document (FSD)
-
-1.  **Interview**: Document functional requirements in detail.
-    *   *Question*: "What are the detailed functional flows and business rules?"
-2.  **Generate**: Execute `skills/fsd-generator/SKILL.md`.
-    *   Output: `docs/features/[feature-name]/fsd.md`.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 7: Technical Design Document (TDD)
-
-1.  **Input**: FSD, ERD Extension, API Contract, Wireframes.
-2.  **Interview**: Technical implementation details.
-    *   *Question*: "Any specific architecture, tech stack, or performance requirements for this feature?"
-3.  **Generate**: Execute `skills/tdd-generator/SKILL.md` in **HEAVY mode**.
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 8: Sprint Stories
-
-1.  **Generate**: Break TDD into sprint-ready, estimated stories via `skills/story-generator/SKILL.md`.
-2.  **Output**: Create `docs/features/[feature-name]/stories.md`.
-3.  **Approve**: Wait for user approval before completion.
+1.  **Objective**: Merge feature-specific artifacts back into the core documentation to maintain a single **cohesive** source of truth (avoiding fragmentation).
+2.  **Refactor Global PRD**:
+    *   **Input**: Read `docs/features/[feature-name]/prd-addendum.md` and the current `docs/prd.md`.
+    *   **Action**: Integrate the new requirements and stories into the Global PRD.
+    *   **CRITICAL**: Do NOT just append the addendum as a new section. You must **REFACTOR** the Global PRD to weave the new feature seamlessly into the existing narrative and structure.
+3.  **Approve**: Wait for explicit user approval. Do NOT auto-proceed after refactoring.
 
 ---
 
@@ -75,4 +37,4 @@ This workflow is for adding new features or modules to an **enterprise, platform
 
 *   Notify the user that feature documentation is complete.
 *   Provide a summary of files created and their locations.
-*   Remind user that ERD changes are explicit and audited, and stories are written *after* FSD/TDD approval.
+*   Remind user that stories are written *after* requirements approval.

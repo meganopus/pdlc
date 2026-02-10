@@ -33,12 +33,10 @@ AI coding assistants are powerful, but they often start building before understa
 ### `kickoff-light-bundle` — Move Fast, Ship Smart
 *For: MVPs, startups, internal tools, hackathons*
 
-One workflow installs everything you need to go from idea → implementation:
-- **Product Brief** — Define your vision and success metrics
-- **PRD** — Detailed requirements with acceptance criteria
-- **Design System** — Tokens, typography, and component guidelines
-- **Wireframes** — UI structure before pixels
-- **TDD** — Technical Design Document with architecture decisions
+One workflow installs everything you need to go from idea → implementation in **minutes**:
+- **Integrated Spec (`docs/spec.md`)** — Combined Product Brief, PRD, and FSD in one file.
+- **Tech Stack & ERD** — Essential architecture decisions and data models.
+- **Traceable Task List (`docs/todo.md`)** — Direct-to-code checklist instead of Jira tickets.
 
 ```bash
 npx mountd add meganopus/pdlc kickoff-light-bundle
@@ -49,11 +47,11 @@ npx mountd add meganopus/pdlc kickoff-light-bundle
 ### `kickoff-heavy-bundle` — Enterprise-Grade Planning
 *For: Regulated industries, multi-team projects, platform engineering*
 
-Everything in Light, plus:
-- **ERD Generator** — Entity Relationship Diagrams for data modeling
-- **API Contract Generator** — OpenAPI specs before implementation
-- **FSD Generator** — Functional Specification Documents
-- **Epic & Story Generators** — Break down features into trackable work
+A comprehensive suite for predictability and scale:
+- **Global Artifacts** — Semantic Versioned Product Brief, PRD, and Design System.
+- **Core Architecture** — Centralized ERD, API Standards, and Tech Stack.
+- **Feature Artifacts** — Per-feature FSD, API Contracts (OpenAPI).
+- **Sprint Stories** — Granular, estimated tickets for agile teams.
 
 ```bash
 npx mountd add meganopus/pdlc kickoff-heavy-bundle
@@ -95,6 +93,7 @@ npx mountd add meganopus/pdlc skill-name
 | `/create-tdd` | Interactive interview for TDD |
 | `/add-feature-light` | Add features with Tech Spec approach |
 | `/add-feature-heavy` | Full documentation suite for new features |
+| `/start-story` | **Context-aware** story starter (auto-loads Light vs Heavy docs) |
 | `/fix-typechecks` | Systematic TypeScript error resolution |
 
 **Install individual workflows:**

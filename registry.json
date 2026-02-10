@@ -5,9 +5,8 @@
         {
             "name": "kickoff-heavy-bundle",
             "type": "bundle",
-            "description": "Full enterprise project kickoff: Product Brief, PRD, Design System, ERD, API Contract, FSD, TDD, and workflows.",
+            "description": "Full enterprise project kickoff: PRD, Design System, ERD, API Contract, FSD, TDD, and workflows.",
             "includes": [
-                "product-brief",
                 "prd-generator",
                 "tech-stack",
                 "design-system",
@@ -43,14 +42,13 @@
         {
             "name": "kickoff-light-bundle",
             "type": "bundle",
-            "description": "Lean startup project kickoff: Product Brief, PRD, Design System, Wireframes, and merged TDD.",
+            "description": "Lean startup project kickoff: Integrated Spec (PRD+FSD+Tech+ERD) and Traceable Task List.",
             "includes": [
-                "product-brief",
                 "prd-generator",
+                "fsd-generator",
                 "tech-stack",
-                "design-system",
-                "wireframe-generator",
-                "tdd-generator",
+                "erd-generator",
+                "story-generator",
                 "project-kickoff-light",
                 "add-feature-light",
                 "start-story"

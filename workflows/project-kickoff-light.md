@@ -1,109 +1,59 @@
 ---
-description: LIGHT complexity project kickoff — fast, lean documentation for startups, MVPs, internal tools, and fast-iteration projects.
+description: LIGHT complexity project kickoff — speed and velocity focused.
 ---
 
 # Project Kickoff Workflow (LIGHT)
 
-This workflow is for **startups, MVPs, internal tools, and fast-iteration projects** where speed and learning are prioritized over ceremony. Documentation follows development, not blocks it.
+This workflow is for **prototypes, MVPs, hackathons, or solo/small team projects** where speed is critical. The goal is to get from "Idea" to "Code" as fast as possible without losing the plot.
 
 ## When to Use LIGHT
 
-Use this workflow if ALL of the following apply:
-- Single team or small team
-- Internal or limited external API consumers
-- Rapid iteration expected
-- No heavy compliance requirements
-- Simple or evolving data model
+Use this workflow if ANY of the following apply:
+- Solo developer or small team (< 3 people)
+- Prototype or MVP phase
+- Speed is the primary constraint
+- "Living document" approach (minimal governance)
 
 ---
 
-# Global Artifacts (Lightweight, Once)
+# Phase 1: The Integrated Spec (PRD + FSD + Tech + ERD)
 
-These are created **once** in a lean format.
+## Step 1: Integrated Spec Interview & Generation
 
-## Step 1: Product Brief (Lightweight)
+> **Philosophy**: "If it doesn't help me write code in the next 10 minutes, skip it."
 
-1.  **Interview**: Quick product overview.
-    *   *Question*: "What is the product, who is it for, and what problem does it solve?"
-2.  **Generate**: 1-page Product Brief via `skills/product-brief/SKILL.md`.
-3.  **Approve**: Wait for user approval before proceeding.
+1.  **Read**: Load `skills/prd-generator/SKILL.md` and `skills/fsd-generator/SKILL.md` for combined guidance.
+2.  **Interview**: Conduct a single "Double-Threat" interview session.
+    *   **Goal**: Gather high-level goals (PRD) AND specific logic rules (FSD) in one go.
+    *   *Question*: "What is the goal of this feature, and what are the specific logic rules for the main user flow?"
+    *   *Tech Stack*: Assume standard defaults (e.g., Next.js, Tailwind, Supabase/Postgres) unless specific requirements exist.
+    *   *Theme*: Ask for primary color and light/dark preference.
+3.  **Generate**: Create a single "Integrated Spec" at `docs/spec.md`.
+    *   **Content**:
+        *   **Section A (PRD)**: Product Brief (Problem, Solution, Audience), User Stories, Success Metrics.
+        *   **Section B (FSD)**: Detailed Functional Flows (e.g., "When user clicks X, Y happens, then Z is updated") & Business Rules.
 
-## Step 2: PRD (Lean, Outcome-Focused)
+## Step 2: Technical Blueprint
 
-1.  **Interview**: Focus on outcomes, not exhaustive requirements.
-    *   *Question*: "What are the 3-5 key outcomes this product must achieve?"
-2.  **Generate**: Lean PRD via `skills/prd-generation/SKILL.md` (short mode if available).
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 3: Design System (Basic or Borrowed)
-
-1.  **Interview**: Quick visual direction.
-    *   *Question*: "Are you using an existing design system (e.g., Tailwind, Material)? If not, describe the vibe in 3 words."
-2.  **Generate**: Basic tokens via `skills/design-system/SKILL.md` or reference existing framework.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 4: API Guidelines (Not Full Contracts)
-
-1.  **Interview**: Minimal API conventions.
-    *   *Question*: "What auth method (JWT, API key)? What's your error format?"
-2.  **Document**: Brief `docs/api-guidelines.md` (1 page max).
-3.  **Approve**: Wait for user approval before proceeding.
+1.  **Read**: Load `skills/erd-generator/SKILL.md` and `skills/tech-stack/SKILL.md`.
+2.  **Action**: Generate the Mermaid ERD and Brief Tech Stack summary.
+3.  **Output**: Append directly to the bottom of `docs/spec.md`.
+4.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+    *   *Action*: Review the `docs/spec.md`. Edit directly if needed.
 
 ---
 
-# Per-Feature Artifacts (Merged & Fast)
+# Phase 2: Execution Plan
 
-Documentation is streamlined — FSD and TDD are **combined**.
+## Step 3: Traceable Task List
 
-## Step 5: Feature Epic + Key User Stories
-
-1.  **Interview**: High-level feature scope and user needs.
-    *   *Question*: "What is the feature and what are the 3-5 key user stories?"
-2.  **Generate**: Execute `skills/epic-generator/SKILL.md` (and use `skills/story-generator/SKILL.md` for stories).
-    *   Output: `docs/features/[feature-name]/epic.md` and individual `CODE-` story files.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 6: UI Wireframes
-
-1.  **Interview**: Key screens only.
-    *   *Question*: "What are the 2-3 critical screens for this feature?"
-2.  **Generate**: Execute `skills/wireframe-generator/SKILL.md`.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 7: API Contract (Only if External/Critical)
-
-1.  **Check**: Is this API consumed externally or is it critical?
-    *   If **No**: Skip this step. Document endpoints inline in the Tech Spec.
-    *   If **Yes**: Execute `skills/api-contract-generator/SKILL.md`.
-        *   Output: `docs/features/[feature-name]/api-contract.md`.
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 8: Combined FSD + TDD (Tech Spec)
-
-This is the core document — **FSD and TDD merged into one**.
-
-1.  **Interview**: Functional and technical details together.
-    *   *Question*: "Walk me through the feature flow and any technical considerations."
-2.  **Gather Details**:
-    - Key functional flows and business rules.
-    - Data model changes (inline, not separate ERD doc).
-    - API endpoints (inline if not external).
-    - Technical approach (architecture, patterns).
-3.  **Generate**: Execute `skills/tdd-generator/SKILL.md` in **LIGHT mode**.
-    *   Output: `docs/features/[feature-name]/tech-spec.md` (~3 pages).
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 9: Sprint Stories
-
-1.  **Generate**: Break Tech Spec into sprint-ready stories via `skills/story-generator/SKILL.md`.
-2.  **Output**: Create a directory of individual story files at `docs/features/[feature-name]/stories/`.
-    *   Naming convention: `CODE-[XXX]-[title].md`.
-3.  **Approve**: Wait for user approval before completion.
-
----
-
-# Completion
-
-*   Notify the user that documentation is complete.
-*   Provide a summary of files created.
-*   Remind user: Documentation follows development here — iterate as you build.
+1.  **Read**: Load `skills/story-generator/SKILL.md`.
+2.  **Context**: Read `docs/spec.md`.
+3.  **Generate**: Create a Task List at `docs/todo.md`.
+    *   **Source**: Derive tasks directly from `docs/spec.md`.
+    *   **Format**: A single markdown file with a checklist of tasks.
+    *   **Style**: Vertical slicing (e.g., "Implement User Auth", "Build Dashboard Layout").
+    *   **Definition of Done**: Include a brief "Definition of Done" for the project.
+    *   **No Granular Stories**: Do NOT create individual `.md` files.
+4.  **Completion**: Notify the user that the kickoff is complete.
+    *   *Reminder*: "Edit `docs/spec.md` directly as the project evolves."

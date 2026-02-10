@@ -1,59 +1,26 @@
 ---
-description: LIGHT complexity feature addition — fast, lean documentation for new features in startups, MVPs, or internal tools.
+description: LIGHT complexity feature addition — fast, lean updates to the single Integrated Spec.
 ---
 
 # Add Feature Workflow (LIGHT)
 
-This workflow is for adding new features or modules to **startups, MVPs, internal tools, and fast-iteration projects**. It prioritizes speed and combined documentation.
+This workflow is for adding features to a project started with **Project Kickoff (LIGHT)**. It maintains the "One-Pager" philosophy by updating the existing `spec.md` rather than creating fragmented documents.
 
-## Step 1: Feature Epic + Key User Stories
+## Step 1: Integrated Spec Update
 
-1.  **Interview**: High-level feature scope and user needs.
-    *   *Question*: "What is the feature and what are the 3-5 key user stories?"
-2.  **Generate**: Execute `skills/epic-generator/SKILL.md` (and use `skills/story-generator/SKILL.md` for stories).
-    *   Output: `docs/features/[feature-name]/epic-and-stories.md`.
-3.  **Approve**: Wait for user approval before proceeding.
+1.  **Read**: Contextualize the existing structure by reading `docs/spec.md`.
+2.  **Interview**: Identify the new feature requirements.
+    *   *Goal*: Define high-level goals (PRD), specific logic rules (FSD), and data changes (ERD).
+    *   *Question*: "What is the goal of this new feature, and what are the specific logic rules and data changes required?"
+3.  **Update**: Edit `docs/spec.md` directly.
+    *   **Action**: Insert the new feature's PRD, FSD, and ERD updates into the relevant sections of the existing spec.
+    *   *Reference*: Use `skills/fsd-generator/SKILL.md` or `skills/erd-generator/SKILL.md` for guidance on how to structure the logic, but **write the output directly into `spec.md`**.
+4.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
 
-## Step 2: UI Wireframes
+## Step 2: Task List Update
 
-1.  **Interview**: Key screens only.
-    *   *Question*: "What are the 2-3 critical screens for this feature?"
-2.  **Generate**: Execute `skills/wireframe-generator/SKILL.md`.
-3.  **Approve**: Wait for user approval before proceeding.
-
-## Step 3: API Contract (Only if External/Critical)
-
-1.  **Check**: Is this API consumed externally or is it critical?
-    *   If **No**: Skip this step. Document endpoints inline in the Tech Spec.
-    *   If **Yes**: Execute `skills/api-contract-generator/SKILL.md`.
-        *   Output: `docs/features/[feature-name]/api-contract.md`.
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 4: Combined FSD + TDD (Tech Spec)
-
-This is the core document — **FSD and TDD merged into one**.
-
-1.  **Interview**: Functional and technical details together.
-    *   *Question*: "Walk me through the feature flow and any technical considerations."
-2.  **Gather Details**:
-    - Key functional flows and business rules.
-    - Data model changes (inline, not separate ERD doc).
-    - API endpoints (inline if not external).
-    - Technical approach (architecture, patterns).
-3.  **Generate**: Execute `skills/tdd-generator/SKILL.md` in **LIGHT mode**.
-    *   Output: `docs/features/[feature-name]/tech-spec.md`.
-4.  **Approve**: Wait for user approval before proceeding.
-
-## Step 5: Sprint Stories
-
-1.  **Generate**: Break Tech Spec into sprint-ready stories via `skills/story-generator/SKILL.md`.
-2.  **Output**: Append to or create `docs/features/[feature-name]/stories.md`.
-3.  **Approve**: Wait for user approval before completion.
-
----
-
-# Completion
-
-*   Notify the user that documentation is complete.
-*   Provide a summary of files created.
-*   Remind user: Documentation follows development here — iterate as you build.
+1.  **Read**: Load `skills/story-generator/SKILL.md` for task breakdown guidance.
+2.  **Update**: Edit `docs/todo.md` directly.
+    *   **Action**: Add the new feature's implementation tasks to the existing list.
+    *   **Style**: Vertical slicing (e.g., "Feature X: Backend API", "Feature X: Frontend UI").
+3.  **Completion**: Notify the user that the feature has been specced and planned.

@@ -10,30 +10,50 @@ Use this workflow when you're ready to begin implementing a specific story. It a
 
 ## Step 1: Identify the Story
 
-1.  **Ask**: "Which story are you working on? Provide the story title or ID."
-2.  **Locate**: Find the story file in `docs/features/[feature-name]/stories/` (e.g., `CODE-001.md`).
-3.  **Confirm**: Display the story details and confirm this is the correct story.
-4.  **Approve**: Wait for user approval before proceeding.
+1.  **Ask**: "Which story are you working on? (Provide ID or Title)"
+2.  **Analyze**: Determine **Domain Focus** (Frontend, Backend, or Full Stack) by:
+    *   Scanning the selected story content for keywords (e.g., "API", "Database", "UI", "Component").
+    *   Checking the currently open files or file structure.
+    *   *Default*: If uncertain, assume **Full Stack**.
+3.  **Locate**: Find the story file in `docs/features/[feature-name]/stories/` (Heavy) or check `docs/todo.md` (Light).
+4.  **Confirm**: Display the story details and the **inferred** project mode & domain focus.
+    *   *Ask*: "Is the inferred context (e.g., Heavy/Backend) correct?"
+5.  **Approve**: Wait for user approval before proceeding.
 
 ---
 
 ## Step 2: Load Context Documents
 
-Automatically read and understand the following documents for the feature:
+Automatically read and understand the documents based on **Project Mode** and **Domain Focus**.
 
-### Required Documents
-1.  **Design System**: Read `docs/design-system.md` for UI/styling guidelines.
-2.  **Wireframes**: Read `docs/features/[feature-name]/wireframes.md` for screen layouts and user flows.
-3.  **Stories**: Read all files in `docs/features/[feature-name]/stories/` to understand context and dependencies.
-4.  **TDD (Technical Design Document)**: Read `docs/features/[feature-name]/tdd.md` for architecture, data flows, and implementation guidance.
+### A. Check Project Mode first
 
-### Optional Documents (if available)
-5.  **API Contract**: Read `docs/features/[feature-name]/api-contract.md` for endpoint specifications.
-6.  **ERD Extension**: Read `docs/features/[feature-name]/erd-extension.md` for data model changes.
-7.  **FSD (Functional Specification)**: Read `docs/features/[feature-name]/fsd.md` for detailed functional requirements.
-8.  **PRD Addendum**: Read `docs/features/[feature-name]/prd-addendum.md` for feature requirements.
-9.  **Core ERD**: Read `docs/erd/core-erd.md` for existing data model context.
-10. **API Standards**: Read `docs/api-standards.md` for platform-wide conventions.
+1.  **Check**: Does `docs/spec.md` exist?
+    *   **YES (Light Mode)**: 
+        *   Read `docs/spec.md` (Integrated Spec).
+        *   Read `docs/todo.md` (Task List).
+        *   *Stop loading other documents.*
+    *   **NO (Heavy Mode)**: Proceed to section B.
+
+### B. Heavy Mode Loading (Conditional)
+
+Load documents based on the **inferred or confirmed** Domain Focus:
+
+#### 1. Always Load (Core Context)
+*   **Stories**: Read all files in `docs/features/[feature-name]/stories/`.
+*   **FSD**: Read `docs/features/[feature-name]/fsd.md` (if exists).
+*   **PRD Addendum**: Read `docs/features/[feature-name]/prd-addendum.md` (if exists).
+
+#### 2. If FRONTEND or FULL STACK
+*   **Design System**: Read `docs/design-system.md`.
+*   **Wireframes**: Read `docs/features/[feature-name]/wireframes.md`.
+*   **API Contract**: Read `docs/features/[feature-name]/api-contract.md` (for integration).
+
+#### 3. If BACKEND or FULL STACK
+*   **Core ERD**: Read `docs/erd/core-erd.md`.
+*   **ERD Extension**: Read `docs/features/[feature-name]/erd-extension.md`.
+*   **API Standards**: Read `docs/api-standards.md`.
+*   **TDD**: Read `docs/features/[feature-name]/tdd.md`.
 
 ---
 
