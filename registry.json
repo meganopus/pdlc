@@ -9,6 +9,7 @@
             "includes": [
                 "product-brief",
                 "prd-generator",
+                "tech-stack",
                 "design-system",
                 "erd-generator",
                 "api-contract-generator",
@@ -23,12 +24,30 @@
             ]
         },
         {
+            "name": "kickoff-heavy-2-bundle",
+            "type": "bundle",
+            "description": "Updated HEAVY project kickoff: Product Brief, PRD, FSD, Tech Stack, Design System, ERD, Stories, and Master Data Integration.",
+            "includes": [
+                "product-brief",
+                "prd-generator",
+                "fsd-generator",
+                "tech-stack",
+                "design-system",
+                "erd-generator",
+                "story-generator",
+                "project-kickoff-heavy-2",
+                "add-feature-heavy",
+                "start-story"
+            ]
+        },
+        {
             "name": "kickoff-light-bundle",
             "type": "bundle",
             "description": "Lean startup project kickoff: Product Brief, PRD, Design System, Wireframes, and merged TDD.",
             "includes": [
                 "product-brief",
                 "prd-generator",
+                "tech-stack",
                 "design-system",
                 "wireframe-generator",
                 "tdd-generator",
@@ -36,12 +55,6 @@
                 "add-feature-light",
                 "start-story"
             ]
-        },
-        {
-            "name": "ai-humanizer",
-            "path": "skills/ai-humanizer",
-            "type": "skill",
-            "description": "Refine content to be conversational, friendly, and undetectable as AI."
         },
         {
             "name": "api-contract-generator",
@@ -56,22 +69,10 @@
             "description": "Create a comprehensive design system with tokens, components, and guidelines."
         },
         {
-            "name": "document-explainer",
-            "path": "skills/document-explainer",
-            "type": "skill",
-            "description": "Explain complex documents or code in simple, easy-to-understand terms."
-        },
-        {
             "name": "epic-generator",
             "path": "skills/epic-generator",
             "type": "skill",
             "description": "Generate detailed Epics from high-level product briefs or requirements."
-        },
-        {
-            "name": "epic-single",
-            "path": "skills/epic-single",
-            "type": "skill",
-            "description": "Generate a single, detailed Epic from a specific requirement."
         },
         {
             "name": "erd-generator",
@@ -86,12 +87,6 @@
             "description": "Generate a Functional Specification Document (FSD) for a feature."
         },
         {
-            "name": "prd-agent-generator",
-            "path": "skills/prd-agent-generator",
-            "type": "skill",
-            "description": "Create a Product Requirements Document (PRD) specifically for AI Agents."
-        },
-        {
             "name": "prd-generator",
             "path": "skills/prd-generator",
             "type": "skill",
@@ -104,16 +99,16 @@
             "description": "Create a high-level Product Brief to outline project goals and scope."
         },
         {
+            "name": "tech-stack",
+            "path": "skills/tech-stack",
+            "type": "skill",
+            "description": "Define and document technology stack and architecture decisions for a project."
+        },
+        {
             "name": "qa-test-scenario",
             "path": "skills/qa-test-scenario",
             "type": "skill",
             "description": "Generate comprehensive QA test scenarios and test cases."
-        },
-        {
-            "name": "skill-creator",
-            "path": "skills/skill-creator",
-            "type": "skill",
-            "description": "Create a new skill for the Prompter system following standard conventions."
         },
         {
             "name": "story-generator",
@@ -122,22 +117,10 @@
             "description": "Generate detailed User Stories from Epics or requirements."
         },
         {
-            "name": "story-single",
-            "path": "skills/story-single",
-            "type": "skill",
-            "description": "Generate a single, detailed User Story with acceptance criteria."
-        },
-        {
             "name": "tdd-generator",
             "path": "skills/tdd-generator",
             "type": "skill",
             "description": "Generate a Technical Design Document (TDD) for features."
-        },
-        {
-            "name": "tdd-lite-generator",
-            "path": "skills/tdd-lite-generator",
-            "type": "skill",
-            "description": "Generate a lightweight TDD plan for smaller changes or features."
         },
         {
             "name": "wireframe-generator",
@@ -158,28 +141,10 @@
             "description": "LIGHT project kickoff for startups, MVPs, internal tools, and fast-iteration projects."
         },
         {
-            "name": "create-product-brief",
-            "path": "workflows/create-product-brief.md",
+            "name": "project-kickoff-heavy-2",
+            "path": "workflows/project-kickoff-heavy-2.md",
             "type": "workflow",
-            "description": "Interactive interview to generate a Product Brief."
-        },
-        {
-            "name": "create-design-system",
-            "path": "workflows/create-design-system.md",
-            "type": "workflow",
-            "description": "Interactive interview to generate a Design System."
-        },
-        {
-            "name": "create-wireframes",
-            "path": "workflows/create-wireframes.md",
-            "type": "workflow",
-            "description": "Interactive interview to generate Wireframes."
-        },
-        {
-            "name": "create-tdd",
-            "path": "workflows/create-tdd.md",
-            "type": "workflow",
-            "description": "Interactive interview to generate a Technical Design Document (TDD)."
+            "description": "Updated HEAVY project kickoff for enterprise, platform, regulated, or multi-team projects with integrated data updates."
         },
         {
             "name": "add-feature-heavy",
