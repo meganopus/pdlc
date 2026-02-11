@@ -23,23 +23,6 @@
             ]
         },
         {
-            "name": "kickoff-heavy-2-bundle",
-            "type": "bundle",
-            "description": "Updated HEAVY project kickoff: Product Brief, PRD, FSD, Tech Stack, Design System, ERD, Stories, and Master Data Integration.",
-            "includes": [
-                "product-brief",
-                "prd-generator",
-                "fsd-generator",
-                "tech-stack",
-                "design-system",
-                "erd-generator",
-                "story-generator",
-                "project-kickoff-heavy-2",
-                "add-feature-heavy",
-                "start-story"
-            ]
-        },
-        {
             "name": "kickoff-light-bundle",
             "type": "bundle",
             "description": "Lean startup project kickoff: Integrated Spec (PRD+FSD+Tech+ERD) and Traceable Task List.",
