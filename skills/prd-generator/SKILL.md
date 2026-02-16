@@ -66,6 +66,17 @@ Present the generated PRD to the user for review. Iterate on feedback until appr
 
 ---
 
+## Feature Addendum Mode
+
+When this skill is invoked to generate a **per-feature PRD addendum** (e.g., `docs/features/[feature-name]/prd-addendum.md`), the output MUST include the following additional sections after the standard PRD content. Omit a section only if truly not applicable, and state why.
+
+1. **ERD Delta** — New or modified entities, attributes, and relationships compared to the Core ERD (`docs/erd/core-erd.md`). Include a Mermaid ERD fragment showing only the delta.
+2. **API Contract** — New or modified endpoints for this feature, following the conventions in `docs/api-standards.md`. Include method, path, request/response shapes, auth requirements, and error responses.
+
+If changes to the ERD or API contract are significant, highlight trade-offs explicitly and flag for user discussion.
+
+---
+
 ## Domain Adaptation
 
 **Technical products:** Add technical considerations section, API documentation placeholders, system integration points.

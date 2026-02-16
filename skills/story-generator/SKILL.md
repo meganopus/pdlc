@@ -45,6 +45,17 @@ Break the feature down into the smallest logical units. Use the template in [ref
 - **Acceptance Criteria**: Must be technical and verifiable (e.g., "API returns 200", "Component renders props").
 - **Dependencies**: Link stories that block each other.
 
+**Layer-aware decomposition (when used with a layered workflow):**
+
+If the calling workflow provides a Layer Reference, apply these additional rules:
+
+- **Layer-tag** every story with the appropriate layer (e.g., `L1-data`, `L3-backend`).
+- **Order bottom-up** — foundation layers (L1, L2) first, then dependent layers (L3, L4), then integration (L5).
+- **First feature only**: include scaffold / project-init tasks within L1 and L2 stories.
+- **Subsequent features**: skip scaffold. Only include L2 stories if the feature needs **new** shared components.
+- **Not all layers apply**: omit layers irrelevant to the project's tech stack (e.g., backend-only projects skip L2/L4).
+- **Generate a dependency graph**: produce a `dependency-graph.md` file alongside the stories containing a Mermaid diagram showing the dependency relationships between stories.
+
 ### Step 3: Review
 
 Present the list of generated stories to the user.

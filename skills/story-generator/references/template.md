@@ -6,6 +6,7 @@
 # [PRODUCT-CODE]-[XXX]: [Technical Story Title]
 
 **Epic:** [EPIC-XXX]
+**Layer:** [L1-data / L2-ui-foundation / L3-backend / L4-feature-ui / L5-integration]
 **Role:** [Frontend / Backend / Fullstack / DevOps]
 **Estimation:** [Fibonacci Points]
 **Priority:** [Must / Should / Could]
