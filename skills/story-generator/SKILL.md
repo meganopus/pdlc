@@ -49,12 +49,16 @@ Break the feature down into the smallest logical units. Use the template in [ref
 
 If the calling workflow provides a Layer Reference, apply these additional rules:
 
-- **Layer-tag** every story with the appropriate layer (e.g., `L1-data`, `L3-backend`).
-- **Order bottom-up** — foundation layers (L1, L2) first, then dependent layers (L3, L4), then integration (L5).
-- **First feature only**: include scaffold / project-init tasks within L1 and L2 stories.
-- **Subsequent features**: skip scaffold. Only include L2 stories if the feature needs **new** shared components.
-- **Not all layers apply**: omit layers irrelevant to the project's tech stack (e.g., backend-only projects skip L2/L4).
-- **Generate a dependency graph**: produce a `dependency-graph.md` file alongside the stories containing a Mermaid diagram showing the dependency relationships between stories.
+1. **Verify Layer Necessity**: Before generating, explicitly check if this feature requires L1 or L2 work:
+   - *Does this feature require schema changes (L1)?*
+   - *Does this feature require NEW shared UI components (L2)?*
+   If the answer is NO, omit stories for that layer.
+
+2. **Generate & Tag**:
+   - **Layer-tag** every story with the appropriate layer (e.g., `L1-data`, `L3-backend`).
+   - **Order bottom-up** — foundation layers (L1, L2) first, then dependent layers (L3, L4), then integration (L5).
+   - **First feature only**: include scaffold / project-init tasks within L1 and L2 stories.
+   - **Not all layers apply**: omit layers irrelevant to the project's tech stack (e.g., backend-only projects skip L2/L4).
 
 ### Step 3: Review
 

@@ -160,7 +160,11 @@ L2 (UI Foundation) ──→ L4 (Feature UI) ──┘
     *   **Input**: `docs/features/[feature-name]/prd-addendum.md` and the current `docs/prd.md`.
     *   **Action**: Integrate the new feature requirements into the Global PRD.
     *   **CRITICAL**: Do NOT just append the addendum as a new section. You must **REFACTOR** the Global PRD to weave the new feature seamlessly into the existing narrative and structure.
-5.  **Approve**: Wait for explicit user approval. Do NOT auto-proceed after integration.
+5.  **Update Global Dependency Graph**:
+    *   **Input**: Scan ALL story files in `docs/features/*/stories/*.md`.
+    *   **Action**: Integrate the stories into `docs/dependency-graph.md`, maintaining the Mermaid diagram showing ALL stories and their dependencies.
+    *   **Visualization**: Use different shapes/colors for completed vs. pending stories if possible.
+6.  **Approve**: Wait for explicit user approval. Do NOT auto-proceed after integration.
 
 ---
 
@@ -168,5 +172,5 @@ L2 (UI Foundation) ──→ L4 (Feature UI) ──┘
 
 *   Notify the user that all documents have been generated.
 *   Provide a summary of files created and their locations.
-*   Remind user that the **dependency graph** in `stories/dependency-graph.md` shows the recommended build order.
+*   Remind user that the **Global Dependency Graph** in `docs/dependency-graph.md` shows the recommended build order across all features.
 *   Remind user that ERD and API changes are explicit, audited, and merged back into global artifacts.
