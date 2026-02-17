@@ -4,167 +4,225 @@ description: HEAVY complexity project kickoff — generates full documentation s
 
 # Project Kickoff Workflow (HEAVY)
 
-This workflow is for **enterprise, platform, regulated, or multi-team projects** where predictability and scale are critical. Each feature is independently deployable and documentation is versioned.
+> [!IMPORTANT]
+> **Rule Zero (Anti-Bias):** Do NOT skip steps or assume completion based on filenames. You must verify every step explicitly with `notify_user` before generating files.
+> **Blocking Assertion:** You are NOT allowed to use `write_to_file` until you have called `notify_user` with the specific list of sections/diffs you are about to write.
+> **Validation (Intent-Based):** You must wait for a clear affirmative **INTENT** (e.g., "ok", "yes", "looks good", "proceed"). Strictly reject ambiguous replies (e.g., "maybe later", "not sure").
+> **Invariant:** Skills are READ-ONLY. Skills return content; they do NOT write files. The Workflow performs the write after approval.
+
+This workflow is for **enterprise, platform, regulated, or multi-team projects** where documentation is a first-class citizen. The goal is to create a robust foundation ("The 5 Pillars") before coding begins.
 
 ## When to Use HEAVY
 
 Use this workflow if ANY of the following apply:
-- Multi-team project
-- External API consumers
-- Regulated or compliance-heavy domain
-- Data model changes affecting multiple services
-- Long-lived platform with multiple stakeholders
+- Team size > 3 developers
+- Regulated industry (FinTech, HealthTech)
+- Long-term maintenance expected (> 1 year)
+- Complex domain logic requires audit trails
+- External stakeholders need to approve specs
 
 ---
 
-# Global Artifacts (Once Per Project)
+# Phase 1: Global Artifacts (The 5 Pillars)
 
-These are created **once** and governed centrally.
+## Step 1: Product Brief (The "Why")
 
-## Step 1: PRD (Signed-Off)
+1.  **Ask**: Call `notify_user`: "Do you want to create a Product Brief now? (Recommended for alignment)".
+2.  **Decision**:
+    *   If **YES**: Proceed.
+    *   If **NO**: Create a placeholder `docs/product-brief.md` saying "Skipped (Regenerate later from PRD)" and **continue to Step 2**.
+3.  **Read**: Load `skills/product-brief/SKILL.md`.
+4.  **Verify**: Call `notify_user` with the list of required sections from the skill.
+5.  **Interview**: Conduct the "Gap Analysis" interview as defined in the skill.
+    *   *Goal*: Understand the Vision, Audience, and Success Metrics.
+6.  **Plan**: Draft the content structure internally.
+7.  **Preview**: Call `notify_user` with the outline of `docs/product-brief.md` you intend to write.
+8.  **Wait**: Wait for "APPROVED: product-brief" or revision requests.
+9.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+10. **Write**: Execute `write_to_file` to create `docs/product-brief.md`.
 
-1.  **Read**: Load `skills/prd-generator/SKILL.md` for interview guidance.
-2.  **Interview**: Follow the skill's data-gathering process to collect requirements, user stories, acceptance criteria, constraints, and dependencies.
-3.  **Confirm**: Require explicit sign-off before proceeding.
-4.  **Generate**: Execute the skill to produce the PRD.
-5.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+## Step 2: Global PRD (The "What")
 
-## Step 2: Functional Specification Document (FSD)
+1.  **Read**: Load `skills/prd-generator/SKILL.md`.
+2.  **Verify**: Call `notify_user` to confirm you are in **Mode A: Global PRD**.
+3.  **Interview**: Follow the skill's gathering process (batch questions).
+4.  **Plan**: Draft the 12 required sections internally.
+5.  **Preview**: Call `notify_user` listing the sections you will include.
+6.  **Wait**: Wait for "APPROVED: prd" or revision requests.
+7.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+8.  **Write**: Execute `write_to_file` to create `docs/prd.md`.
 
-1.  **Read**: Load `skills/fsd-generator/SKILL.md` for interview guidance.
-2.  **Interview**: Follow the skill's data-gathering process to collect detailed functional flows and business rules.
-3.  **Generate**: Execute the skill to produce `docs/features/[feature-name]/fsd.md`.
-4.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+## Step 3: Tech Stack Definition (No Code Yet)
 
-## Step 3: Tech Stack & Architecture Decision
+1.  **Read**: Load `skills/tech-stack/SKILL.md`.
+2.  **Verify**: Call `notify_user` with the proposed stack categories (Frontend, Backend, Infra, etc.).
+3.  **Action**: Define the technology choices.
+4.  **Preview**: Call `notify_user` with the proposed stack summary.
+5.  **Wait**: Wait for "APPROVED: tech-stack" or revision requests.
+6.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+7.  **Write**: Execute `write_to_file` to create `docs/tech-stack.md`.
 
-1.  **Read**: Load `skills/tech-stack/SKILL.md` for interview guidance.
-2.  **Interview**: Follow the skill's data-gathering process to collect application type, team expertise, frontend/backend frameworks, database, auth strategy, hosting/infra, CI/CD, and third-party integrations.
-3.  **Confirm**: Summarize stack choices and trade-offs.
-4.  **Generate**: Execute the skill to produce `docs/tech-stack.md`.
-5.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+## Step 4: System Architecture & Global Rules (Global FSD)
 
-## Step 4: Design System
+1.  **Read**: Load `skills/fsd-generator/SKILL.md`.
+2.  **Verify**: Call `notify_user` to confirm you are in **Mode A: Global FSD**.
+3.  **Plan**: Draft the Architecture, Global Rules, and Data Dictionary.
+4.  **Preview**: Call `notify_user` with the proposed sections.
+5.  **Wait**: Wait for "APPROVED: fsd" or revision requests.
+6.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+7.  **Write**: Execute `write_to_file` to create `docs/fsd.md`.
 
-1.  **Read**: Load `skills/design-system/SKILL.md` for interview guidance.
-2.  **Interview**: Follow the skill's data-gathering process to collect brand identity, colors, typography, component styles, and accessibility requirements.
-3.  **Confirm**: Summarize the design direction.
-4.  **Generate**: Execute the skill to produce the Design System.
-5.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
 
-## Step 5: Core ERD  [Optional, ask user if they want to do this]
+## Step 5: Design System
 
-> [!IMPORTANT]
-> **Why this matters for HEAVY projects:**
-> Skipping this step often leads to "data silos" where different features duplicate data inconsistently. A unified ERD is critical for reporting, analytics, and maintaining data integrity across a large system.
+1.  **Read**: Load `skills/design-system/SKILL.md`.
+2.  **Verify**: Call `notify_user` with the list of design tokens/components you plan to define.
+3.  **Interview**: Follow the skill's gathering process (Brand, Colors, Typography).
+4.  **Plan**: Draft the design system structure.
+5.  **Preview**: Call `notify_user` with the proposed content of `docs/design-system.md`.
+6.  **Wait**: Wait for "APPROVED: design-system" or revision requests.
+7.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+8.  **Write**: Execute `write_to_file` to create the Design System.
 
-1.  **Read**: Load `skills/erd-generator/SKILL.md` for interview guidance.
-2.  **Interview**: Follow the skill's data-gathering process to collect core entities, attributes, relationships, cardinalities, and constraints.
-3.  **Confirm**: Review entity diagram.
-4.  **Generate**: Execute the skill to produce `docs/erd/core-erd.md` with Mermaid ERD.
-5.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+## Step 6: Core ERD (Optional)
 
-## Step 6: Core API Standards & Contract Governance [Optional, ask user if they want to do this]
+1.  **Ask**: Call `notify_user` to ask: "Do you want to create a Core ERD? (Required for complex data apps)".
+2.  **Decision**:
+    *   If **YES**: Proceed.
+    *   If **NO**: Create a placeholder `docs/erd/core-erd.md` saying "Skipped" and **STOP** this step.
+3.  **Read**: Load `skills/erd-generator/SKILL.md`.
+4.  **Verify**: Call `notify_user` to confirm you are in **Mode A: Core ERD**.
+5.  **Plan**: Draft the entities and relationships.
+6.  **Preview**: Call `notify_user` with the Mermaid diagram source or summary.
+7.  **Wait**: Wait for "APPROVED: erd" or revision requests.
+8.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+9.  **Output**: Execute `write_to_file` to create `docs/erd/core-erd.md`.
 
-> [!IMPORTANT]
-> **Why this matters for HEAVY projects:**
-> Inconsistent APIs are the #1 cause of "integration hell" in multi-team projects. Defining standards and contracts upfront allows frontend and backend teams to work independently without blocking each other.
+## Step 7: Core API Standards (Optional)
 
-1.  **Interview**: Define platform-wide API conventions.
-    *   *Question*: "What are your standards for authentication, error handling, versioning, and rate limiting?"
-2.  **Document Standards**: Create `docs/api-standards.md` covering:
-    - Auth flow (OAuth, JWT, API keys)
-    - Error response format
-    - Versioning strategy
-    - Rate limiting policy
-3.  **Generate Contracts**:
-    *   **Objective**: Allow frontend and backend teams to work in parallel.
-    *   **Action**: Generate OpenAPI/Swagger specifications based on the FSD and Data Model.
-    *   **Output**: Create `docs/api/contracts/` containing the spec files (e.g., `openapi.yaml`).
-4.  **Approve**: Wait for explicit user approval. Do NOT auto-proceed after generating contracts.
+1.  **Ask**: Call `notify_user` to ask: "Do you want to define Core API Standards?".
+2.  **Decision**:
+    *   If **YES**: Proceed.
+    *   If **NO**: Create a placeholder `docs/api-standards.md` saying "Skipped" and **STOP** this step.
+3.  **Interview**: Define auth, error handling, versioning.
+4.  **Plan**: Draft the standards.
+5.  **Preview**: Call `notify_user` with the proposed standards.
+6.  **Wait**: Wait for "APPROVED: api-standards" or revision requests.
+7.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+8.  **Write**: Execute `write_to_file` to create `docs/api-standards.md`.
+9.  **Contracts**:
+    *   If Standards were approved, propose generating OpenAPI specs.
+    *   **Read**: Load `skills/api-contract-generator/SKILL.md`.
+    *   **Preview**: Call `notify_user` with the list of contracts.
+    *   **Wait**: Wait for affirmative intent or revision requests.
+    *   **Revision Loop**:
+        *   If changes requested: Update list, re-preview, wait.
+        *   Repeat until approved.
+    *   **Write**: Create `docs/api/contracts/`.
+
+---
+
+# Feature Discovery
+
+## Step 8: Create Feature List
+
+1.  **Read**: `docs/prd.md`.
+2.  **Plan**: Identify all features from the "User Stories" or "Requirements" section.
+3.  **Preview**: Call `notify_user` with the proposed `docs/features/feature-list.md`.
+4.  **Wait**: Wait for "APPROVED: feature-list" or revision requests.
+5.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+6.  **Write**: Execute `write_to_file`.
 
 ---
 
 # Per-Feature Artifacts (Repeat Per Feature)
 
-These are created **for each feature or module**.
+Iterate through each **unchecked item** in `docs/features/feature-list.md`.
 
-## Layer Reference
+## Start Gate: Feature Approval
 
-Stories are decomposed **bottom-up** using the following layers. Layers without upstream dependencies can be worked in parallel.
+> **Validation (Intent-Based):** You must wait for a clear affirmative **INTENT** from the user (e.g., "ok", "yes", "looks good", "proceed"). Strictly reject ambiguous replies (e.g., "maybe later", "not sure").
+> **Persistence Strategy:** This workflow relies on the state of `docs/features/feature-list.md`. If the session is interrupted, simply restart the workflow; it will skip already checked `[x]` items and resume at the first unchecked item.
 
-```
-L1 (Data Model) ──→ L3 (Backend / API) ──┐
-                                          ├──→ L5 (Integration / E2E)
-L2 (UI Foundation) ──→ L4 (Feature UI) ──┘
-```
+1.  **Select**: Pick the next unchecked feature.
+2.  **Ask**: Call `notify_user`: "Ready to start feature '[Feature Name]'?".
+3.  **Wait**: Wait for affirmative intent or "SKIP".
+    *   If SKIP: Mark as skipped in `feature-list.md` and continue to next item.
+    *   If AFFIRMATIVE: Mark as `[x]` (In Progress) and proceed to Step 9.
 
-| Tag | Purpose | Depends On | Notes |
-|-----|---------|------------|-------|
-| `L1-data` | Schema, migrations, seed data | — | *First feature: includes project scaffold* |
-| `L2-ui-foundation` | Shared components, layouts, design tokens | — | *First feature: includes UI init* |
-| `L3-backend` | API endpoints, services, business logic | L1 | |
-| `L4-feature-ui` | Screens, pages, feature-specific UI | L2 | |
-| `L5-integration` | E2E flows, cross-cutting wiring | L3 + L4 | |
+## Step 9: Feature-Specific Requirements & Delta (Addendum Mode)
 
-> [!NOTE]
-> **Not all layers apply to every project.** Use only the layers relevant to the project's tech stack (see `docs/tech-stack.md`). For backend-only projects, omit L2/L4. For frontend-only projects, omit L1/L3. The dependency graph adjusts accordingly.
+1.  **Read**: Load `skills/prd-generator/SKILL.md`.
+2.  **Context Refresh**: Explicitly read `docs/tech-stack.md` and `docs/prd.md` to refresh memory.
+3.  **Verify**: Call `notify_user` to confirm you are in **Mode B: Feature Addendum**.
+4.  **Additional Context**: Read other global artifacts if they exist:
+    *   *Conditional*: If `docs/erd/core-erd.md` exists, read it.
+    *   *Conditional*: If `docs/api-standards.md` exists, read it.
+5.  **Interview**: Follow the skill's gathering process.
+6.  **Plan**: Draft the Addendum Requirements.
+    *   *Conditional*: Include ERD Delta only if Core ERD exists.
+    *   *Conditional*: Include API Contract only if API Standards exist.
+7.  **Preview**: Call `notify_user` with the Addendum outline.
+8.  **Wait**: Wait for "APPROVED" or revision requests.
+9.  **Revision Loop**:
+    *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+10. **Write**: Execute `write_to_file` to create `docs/features/[feature-name]/prd-addendum.md`.
 
-## Step 7: Feature PRD Addendum
+## Step 10: Feature Story Decomposition (L1-L5)
 
-1.  **Read**: Load `skills/prd-generator/SKILL.md` for interview guidance.
-2.  **Context**: Read the current `docs/prd.md`, `docs/erd/core-erd.md`, and `docs/api-standards.md` (if they exist) to understand the current product state.
-3.  **Interview**: Follow the skill's data-gathering process, scoped to this specific feature.
-4.  **Generate**: Execute the skill to produce `docs/features/[feature-name]/prd-addendum.md`.
-    The addendum MUST include the following sections (omit a section only if truly not applicable, and state why):
-    *   **Feature Requirements** — scope, user stories, acceptance criteria.
-    *   **ERD Delta** — new or modified entities, attributes, and relationships vs. the Core ERD. Include a Mermaid ERD fragment.
-    *   **API Contract** — new or modified endpoints for this feature, following the conventions in `docs/api-standards.md`. Include method, path, request/response shapes.
-5.  **Discuss**: Walk the user through the addendum. If changes to the ERD or API contract are significant, highlight trade-offs explicitly.
-6.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed.
+1.  **Read**: Load `skills/story-generator/SKILL.md`.
+2.  **Verify**: Call `notify_user` with the list of stories (titles only) grouped by layer.
+3.  **Wait**: Wait for affirmative intent or revision requests.
+4.  **Revision Loop**:
+    *   If changes requested: Update draft, re-preview, wait.
+    *   Repeat until approved.
+5.  **Write**: Execute `write_to_file` to create story files at `docs/features/[feature-name]/stories/`.
 
-## Step 8: Sprint Stories
+## Step 11: Global Artifacts Integration
 
-1.  **Read**: Load `skills/story-generator/SKILL.md` for guidance.
-2.  **Generate**: Execute the skill to break the feature into sprint-ready, estimated stories.
-    *   **Layer-tag** each story using the Layer Reference above (`L1-data`, `L2-ui-foundation`, `L3-backend`, `L4-feature-ui`, `L5-integration`).
-    *   **Mark dependencies** between stories (e.g., `depends: FEAT-001`).
-    *   **Order bottom-up** — L1/L2 stories first, then L3/L4, then L5.
-    *   **First feature only**: include scaffold / init tasks within L1 and L2 stories.
-    *   **Subsequent features**: skip scaffold. Only include L2 stories if the feature requires **new** shared components.
-3.  **Output**: Create story files at `docs/features/[feature-name]/stories/`.
-    *   Each story in its own markdown file (e.g., `FEAT-001-schema.md`).
-    *   Generate `docs/features/[feature-name]/stories/dependency-graph.md` containing a **Mermaid dependency diagram** showing the relationships between stories.
+> [!IMPORTANT]
+> **Merge Safety:** You must compute and show the EXACT diffs before modifying any global artifact.
 
-    Example dependency graph:
-    ```mermaid
-    graph TD
-        FEAT-001["FEAT-001: Schema (L1)"] --> FEAT-003["FEAT-003: List API (L3)"]
-        FEAT-002["FEAT-002: Shared Card (L2)"] --> FEAT-004["FEAT-004: Detail Page (L4)"]
-        FEAT-003 --> FEAT-005["FEAT-005: E2E Flow (L5)"]
-        FEAT-004 --> FEAT-005
-    ```
-4.  **Approve**: Stop and wait for explicit user approval. Do NOT auto-proceed. If revisions are requested, regenerate and STOP again for approval.
-
-## Step 9: Global Artifacts Integration
-
-1.  **Objective**: Merge feature-specific artifacts back into the core documentation to maintain a single **cohesive** source of truth.
-2.  **Merge ERD Delta** *(if applicable)*:
-    *   **Input**: The ERD Delta section from `docs/features/[feature-name]/prd-addendum.md` and the current `docs/erd/core-erd.md`.
-    *   **Action**: Integrate new/modified entities into the Core ERD.
-    *   **CRITICAL**: Validate that no existing relationships are broken. Flag conflicts for user review.
-3.  **Merge API Contracts** *(if applicable)*:
-    *   **Input**: The API Contract section from the addendum and existing `docs/api/contracts/`.
-    *   **Action**: Add new endpoints to the contract specs. Ensure consistency with `docs/api-standards.md`.
-4.  **Refactor Global PRD**:
-    *   **Input**: `docs/features/[feature-name]/prd-addendum.md` and the current `docs/prd.md`.
-    *   **Action**: Integrate the new feature requirements into the Global PRD.
-    *   **CRITICAL**: Do NOT just append the addendum as a new section. You must **REFACTOR** the Global PRD to weave the new feature seamlessly into the existing narrative and structure.
-5.  **Update Global Dependency Graph**:
-    *   **Input**: Scan ALL story files in `docs/features/*/stories/*.md`.
-    *   **Action**: Integrate the stories into `docs/dependency-graph.md`, maintaining the Mermaid diagram showing ALL stories and their dependencies.
-    *   **Visualization**: Use different shapes/colors for completed vs. pending stories if possible.
-6.  **Approve**: Wait for explicit user approval. Do NOT auto-proceed after integration.
+1.  **Objective**: Merge feature-specific artifacts back into the core.
+2.  **Plan Merge**:
+    *   *ERD*: Draft the new Mermaid entities for `docs/erd/core-erd.md`.
+    *   *API*: Draft the new endpoints for `docs/api/contracts/`.
+    *   *PRD*: Draft the new section for `docs/prd.md`.
+3.  **Targeted Section Preview**: Call `notify_user` with the **specific section content** you are changing.
+    *   *Do NOT* dump the entire file.
+    *   *Example*: "I am replacing the `## 3.1 User Schema` block with the following..."
+4.  **Wait**: Wait for affirmative intent regarding the merge (e.g., "ok", "merge it").
+5.  **Revision Loop**:
+    *   If changes requested: Recalculate diffs, re-call `notify_user` (Preview), and Wait again.
+    *   Repeat until APPROVED.
+6.  **Execute Merge**:
+    *   **Conditional**: If `docs/erd/core-erd.md` exists, update it.
+    *   **Conditional**: If `docs/api/contracts/` exists, update it.
+    *   **Always**: Update `docs/prd.md`.
+7.  **Update Graph**:
+    *   Execute `skills/dependency-graph-manager/SKILL.md` to update `docs/dependency-graph/README.md`.
+    *   **Preview**: Call `notify_user` with the new graph.
+    *   **Wait**: Wait for affirmative intent regarding the graph update.
+    *   **Revision Loop**:
+        *   If changes requested: Update, re-preview, wait.
+    *   **Write**: Save the graph.
 
 ---
 
@@ -172,5 +230,5 @@ L2 (UI Foundation) ──→ L4 (Feature UI) ──┘
 
 *   Notify the user that all documents have been generated.
 *   Provide a summary of files created and their locations.
-*   Remind user that the **Global Dependency Graph** in `docs/dependency-graph.md` shows the recommended build order across all features.
-*   Remind user that ERD and API changes are explicit, audited, and merged back into global artifacts.
+*   Remind user that the **Global Dependency Graph** in `docs/dependency-graph/README.md` shows the recommended build order across all features.
+*   Remind user that ERD and API changes are explicit, audited, and merged back into global artifacts (if applicable).

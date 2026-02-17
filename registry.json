@@ -19,7 +19,8 @@
                 "story-generator",
                 "project-kickoff-heavy",
                 "add-feature-heavy",
-                "start-story"
+                "start-story",
+                "dependency-graph-manager"
             ]
         },
         {
@@ -150,6 +151,12 @@
             "path": "workflows/start-story.md",
             "type": "workflow",
             "description": "Start working on a story with all relevant context documents auto-loaded."
+        },
+        {
+            "name": "dependency-graph-manager",
+            "path": "skills/dependency-graph-manager",
+            "type": "skill",
+            "description": "Updates the Global Dependency Graph by scanning feature stories."
         }
     ]
 }

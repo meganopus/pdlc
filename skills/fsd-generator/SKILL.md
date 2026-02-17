@@ -17,46 +17,54 @@ Generate a complete FSD that converts PRD requirements into precise functional s
 
 ## Process
 
-### Step 1: Analyze the PRD
+### Step 1: Check Mode
 
-Extract from the provided PRD:
-- All business requirements and user stories
-- Core features and their priorities
-- User personas mapped to functional needs
-- Constraints, assumptions, and dependencies
+**Mode A: Global FSD** (Default)
+Trigger: "Create FSD", "Project Kickoff", or no context.
+Goal: Create `docs/fsd.md`.
 
-If no PRD is provided, gather the necessary information from the user:
+**Mode B: Feature FSD**
+Trigger: "Feature FSD", "Feature Spec", or specific feature context.
+Goal: Create `docs/features/[feature]/fsd.md`.
 
-**Must-have (ask first):**
-- Product/feature name and description
-- Core user stories or requirements
-- User roles and permissions
-- Key business rules
+### Step 2: Analyze the PRD/Context
 
-**Important (ask second):**
-- Data entities and relationships
-- Integration or API requirements
-- Error handling expectations
-- Non-functional constraints (performance, security)
+**Key Analysis Rules:**
+- **Traceability**: Every FSD item must map to a PRD requirement.
+- **MoSCoW**: Prioritize features (Must/Should/Could/Won't).
+- **Gaps**: Identify vague requirements and list them as "Open Questions".
 
-### Step 2: Generate the FSD
+**Extract:**
+- **Global**: System-wide patterns, Roles/Permissions, Integration constraints.
+- **Feature**: Specific user stories, Acceptance Criteria, Edge cases.
 
-Use the template in [references/template.md](references/template.md) as the output structure.
+### Step 3: Generate Output
 
-**Key generation rules:**
-- Convert each PRD item into specific, testable functional requirements with unique IDs (`FR-XXX`)
-- Establish requirement traceability back to PRD sections
-- Use Given-When-Then for all acceptance criteria
-- Define business rules as atomic, non-contradictory rules (`BR-XXX`)
-- Use MoSCoW prioritization (Must Have / Should Have / Could Have / Won't Have)
-- Use precise language — "shall", "will", "must" instead of "should", "might", "could"
-- Include negative test scenarios (what should NOT happen)
-- Every PRD requirement must map to at least one functional specification
-- If the PRD is vague, document gaps in "Open Questions/TBD Items" and mark assumptions clearly
+**Writing Style Rules:**
+- Use precise language: "System SHALL..." (mandatory) vs "System MAY..." (optional).
+- Define **Atomic Business Rules** (`BR-XXX`).
+- Use **Given-When-Then** for acceptance criteria.
+- Include **Negative Scenarios** (what happens when things go wrong).
 
-### Step 3: Review & Refine
+#### If Mode A (Global FSD):
+Produce `docs/fsd.md` focusing on:
+1.  **System Architecture**: High-level diagrams, tech stack integration strategy.
+2.  **Global Business Rules**: Permissions, standard workflows, validations.
+3.  **Data Dictionary**: Core entities, types, and relationships.
+4.  **API Standards**: Error formats, pagination, auth flows.
 
-Present the generated FSD to the user. Flag any PRD inconsistencies or conflicts identified during generation. Iterate on feedback until approved.
+#### If Mode B (Feature FSD):
+Produce `docs/features/[feature]/fsd.md` focusing on:
+1.  **Functional Logic**: Detailed steps for every user interaction (Happy Path + Alt Paths).
+2.  **UI States**: Loading, Empty, Partial, Error, Success.
+3.  **Validation Rules**: Field-level validation (types, lengths, regex).
+4.  **Edge Cases**: Network failures, race conditions, concurrent editing.
+5.  **Mermaid Flows**: Sequence diagrams for complex logic.
+6.  **Traceability Matrix**: Link `FR-XXX` to `US-XXX`.
+
+### Step 4: Review & Refine
+
+Present the generated FSD for review. Iterate on feedback.
 
 ---
 

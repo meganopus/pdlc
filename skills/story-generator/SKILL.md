@@ -19,18 +19,22 @@ Generate a set of **Technical Implementation Stories** (prefixed with `CODE-`) t
 
 ### Step 1: Process Inputs
 
+**Context Loading (for all scenarios):**
+- Read `docs/dependency-graph/graph.yaml` (if it exists) to understand the current project landscape and existing feature codes.
+
 **Scenario A: Converting a Tech Spec / TDD**
 Read the provided TDD/Tech Spec. Identify:
 - All required API endpoints
 - Database schema changes
 - Frontend components / screens
-- Integration points
+- **External Dependencies**: Features or services this work blocks on (e.g., Auth, Payment).
 
 **Scenario B: Standalone Request (No Docs)**
 Interview the user to gather context:
 - **Product Code**: What short code to use for IDs? (e.g., `VORA`, `QUEUE`)
 - **Scope**: What specific feature needs stories?
 - **Architecture**: Frontend framework, Backend patterns, Database?
+- **Dependencies**: Does this feature depend on any existing features (e.g., Auth, Global Layout)?
 - **Granularity**: Should stories be per-component (React Component X) or per-feature (Full Stack Login)?
 
 ### Step 2: Decompose & Generate
@@ -45,18 +49,38 @@ Break the feature down into the smallest logical units. Use the template in [ref
 - **Acceptance Criteria**: Must be technical and verifiable (e.g., "API returns 200", "Component renders props").
 - **Dependencies**: Link stories that block each other.
 
-**Layer-aware decomposition (when used with a layered workflow):**
+**Layer-aware decomposition (Standard L1-L5 Model):**
 
-If the calling workflow provides a Layer Reference, apply these additional rules:
+Use this layered approach to breakdown features deeply.
 
-1. **Verify Layer Necessity**: Before generating, explicitly check if this feature requires L1 or L2 work:
+```
+L1 (Data Model) ──→ L3 (Backend / API) ──┐
+                                          ├──→ L5 (Integration / E2E)
+L2 (UI Foundation) ──→ L4 (Feature UI) ──┘
+```
+
+| Tag | Purpose | Depends On | Notes |
+|-----|---------|------------|-------|
+| `L1-data` | Schema, migrations, seed data | — | *First feature: includes project scaffold* |
+| `L2-ui-foundation` | Shared components, layouts, design tokens | — | *First feature: includes UI init* |
+| `L3-backend` | API endpoints, services, business logic | L1 | |
+| `L4-feature-ui` | Screens, pages, feature-specific UI | L2 | |
+| `L5-integration` | E2E flows, cross-cutting wiring | L3 + L4 | |
+
+**Rules:**
+
+1. **Verify Layer Necessity**: Before generating, explicitly check:
    - *Does this feature require schema changes (L1)?*
    - *Does this feature require NEW shared UI components (L2)?*
-   If the answer is NO, omit stories for that layer.
+   If NO, omit stories for that layer.
 
 2. **Generate & Tag**:
-   - **Layer-tag** every story with the appropriate layer (e.g., `L1-data`, `L3-backend`).
+   - **Layer-tag** every story with the appropriate layer from the table above.
    - **Order bottom-up** — foundation layers (L1, L2) first, then dependent layers (L3, L4), then integration (L5).
+   - **Populate `depends:` metadata**:
+     - *Linking Layers*: Use the **Depends On** column from the table above.
+     - *External Deps*: If the feature depends on another Epic (e.g., Auth), include `[EPIC-XXX]-[CODE]` in the depends field.
+     - *Why*: This metadata is used to build the **Project-Wide Dependency Graph**.
    - **First feature only**: include scaffold / project-init tasks within L1 and L2 stories.
    - **Not all layers apply**: omit layers irrelevant to the project's tech stack (e.g., backend-only projects skip L2/L4).
 

@@ -17,65 +17,68 @@ Generate a complete, professional PRD that clearly defines a product or feature'
 
 ## Process
 
-### Step 1: Gather Information
+### Step 1: Check Mode
 
-Collect the following from the user. Ask in batches of 3-4 questions to avoid overwhelming them.
+**Mode A: Global PRD** (Default)
+Trigger: "Create a PRD", "Project Kickoff", or no context.
+Goal: Create the master `docs/prd.md`.
 
-**Must-have (ask first):**
-- Product/Feature name
-- Core problem being solved and for whom
-- Key features or capabilities (top 3-5)
-- Business goals / what success looks like
+**Mode B: Feature Addendum**
+Trigger: "Create an addendum", "Feature PRD", or called from **Project Kickoff (Heavy)** loop.
+Goal: Create `docs/features/[feature]/prd-addendum.md`.
 
-**Important (ask second):**
-- Target release timeline
-- Success metrics or KPIs
-- Scope boundaries — what's explicitly out of scope
-- Technical constraints or dependencies
+### Step 2: Gather Information
 
-**Nice-to-have (ask if not already covered):**
-- Current state / existing workarounds
-- User personas and primary journeys
-- Platform requirements (Web/Mobile/Desktop)
-- Analytics tracking needs
+**Interview Strategy:**
+- Ask questions in batches of 3-4 to avoid overwhelming the user.
+- If the user provides all info upfront, skip the interview.
 
-If the user provides all info upfront, skip the interview and proceed directly to generation.
+**For Global PRD (Mode A):**
+1.  **Must-have (ask first)**: Product Name, Core Problem, Key Capabilities, Business Goals.
+2.  **Important (ask second)**: Timeline, Success Metrics (KPIs), Scope Boundaries (In/Out), Tech Constraints.
+3.  **Nice-to-have (ask if not already covered)**: User Personas, Platform Requirements (Web/Mobile), Analytics Needs.
 
-### Step 2: Generate the PRD
+**For Feature Addendum (Mode B):**
+1.  **Feature Context (ask first)**: Feature Name, Parent Epic, Status.
+2.  **Requirements**: Specific User Stories, Acceptance Criteria.
+3.  **Technical Delta**:
+    - **ERD Delta**: What new tables/columns are needed?
+    - **API Contract**: What new endpoints are needed?
+    - **Integration**: Any breaking changes?
 
-Produce a markdown PRD with these required sections:
+### Step 3: Generate Output
 
-1. **Overview** — Metadata table (feature name, timeline, team)
-2. **Quick Links** — Placeholder links to design, tech spec, project board
-3. **Background** — Context, current state, problem statement with impact
-4. **Objectives** — Business objectives (3-5 measurable) + user objectives
-5. **Success Metrics** — Table with baseline, target, measurement method, timeline
-6. **Scope** — MVP goals, in-scope (✅), out-of-scope (❌ with reasoning), future iterations
-7. **User Flow** — Main journey, alternative flows, edge cases (use code blocks for diagrams)
-8. **User Stories** — Table with ID (US-##), story, acceptance criteria (Given-When-Then), platform
-9. **Analytics & Tracking** — Event tracking table with JSON-formatted event structures
-10. **Open Questions** — Tracking table for unresolved items
-11. **Notes & Considerations** — Technical and business considerations, migration notes
-12. **Appendix** — References and glossary
+#### If Mode A (Global PRD):
+Produce `docs/prd.md` with these required sections (use tables for structured data):
+1.  **Overview** — Metadata table (feature name, timeline, team).
+2.  **Quick Links** — Placeholders for design, tech spec, board.
+3.  **Background** — Context, problem statement, impact.
+4.  **Objectives** — Business objectives (3-5 measurable) + user objectives.
+5.  **Success Metrics** — Table with baseline, target, measurement method.
+6.  **Scope** — MVP goals, in-scope (✅), out-of-scope (❌ with reasoning).
+7.  **User Flow** — Main journey, alternative flows, edge cases (use code blocks).
+8.  **User Stories** — Table with ID (US-##), story, acceptance criteria (Given-When-Then).
+9.  **Analytics** — Event tracking table with JSON-formatted event structures.
+10. **Open Questions** — Tracking table for unresolved items.
+11. **Notes** — Technical/business considerations.
+12. **Appendix** — References/Glossary.
 
 See [references/examples.md](references/examples.md) for user story and analytics event format examples.
 
-### Step 3: Review & Refine
+#### If Mode B (Feature Addendum):
+Produce `docs/features/[feature]/prd-addendum.md` with:
+1.  **Feature Metadata**: Name, Epic, Status.
+2.  **Requirements**: User Stories table (US-##), Acceptance Criteria (Given-When-Then).
+3.  **ERD Delta**: Mermaid diagram of NEW entities/relations only.
+4.  **API Contract**: New endpoints (Method, Path, Request, Response, Error Codes).
+5.  **Integration Notes**: Specific callouts for breaking changes or migration needs.
 
-Present the generated PRD to the user for review. Iterate on feedback until approved.
-
----
-
-## Feature Addendum Mode
-
-When this skill is invoked to generate a **per-feature PRD addendum** (e.g., `docs/features/[feature-name]/prd-addendum.md`), the output MUST include the following additional sections after the standard PRD content. Omit a section only if truly not applicable, and state why.
-
-1. **ERD Delta** — New or modified entities, attributes, and relationships compared to the Core ERD (`docs/erd/core-erd.md`). Include a Mermaid ERD fragment showing only the delta.
-2. **API Contract** — New or modified endpoints for this feature, following the conventions in `docs/api-standards.md`. Include method, path, request/response shapes, auth requirements, and error responses.
-
-If changes to the ERD or API contract are significant, highlight trade-offs explicitly and flag for user discussion.
+### Step 4: Review
+Present for approval.
 
 ---
+
+
 
 ## Domain Adaptation
 
