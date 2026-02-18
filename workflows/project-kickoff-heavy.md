@@ -140,14 +140,35 @@ Use this workflow if ANY of the following apply:
 
 ## Step 8: Create Feature List
 
-1.  **Read**: `docs/prd.md`.
-2.  **Plan**: Identify all features from the "User Stories" or "Requirements" section.
-3.  **Preview**: Call `notify_user` with the proposed `docs/features/feature-list.md`.
-4.  **Wait**: Wait for "APPROVED: feature-list" or revision requests.
-5.  **Revision Loop**:
+1.  **Scan**: Use `read_file` or `list_directory` to inspect the repo root.
+2.  **Check Foundation**:
+    *   **Scaffold**: Look for project indicators (e.g., `package.json`, `go.mod`, `manage.py`).
+    *   **DB**: If `docs/erd/core-erd.md` exists, check for schema/migration/model files.
+    *   **UI**: If `docs/design-system.md` exists, check for component libraries/structure/layout.
+3.  **Classify**: Mark each as `EXISTS`, `PARTIAL`, or `MISSING`.
+4.  **Resolve**:
+    *   **Scaffold**:
+        *   `EXISTS` -> skip, do not add to feature list.
+        *   `PARTIAL` -> add `[FOUNDATION] Project Scaffold` with note "extend only, do not overwrite".
+        *   `MISSING` -> add `[FOUNDATION] Project Scaffold`.
+    *   **DB** (Conditional: only if `docs/erd/core-erd.md` exists):
+        *   `EXISTS` -> skip, do not add to feature list.
+        *   `PARTIAL` -> add `[FOUNDATION] Base DB Schema` with note "extend only, do not overwrite".
+        *   `MISSING` -> add `[FOUNDATION] Base DB Schema`.
+    *   **UI** (Conditional: only if `docs/design-system.md` exists):
+        *   `EXISTS` -> skip, do not add to feature list.
+        *   `PARTIAL` -> add `[FOUNDATION] Base UI Components` with note "extend only, do not overwrite".
+        *   `MISSING` -> add `[FOUNDATION] Base UI Components`.
+5.  **Read**: `docs/prd.md`.
+6.  **Plan**:
+    *   **Foundation**: Use the resolved items from Step 4.
+    *   **Features**: Identify all remaining features from the PRD "User Stories" or "Requirements".
+7.  **Preview**: Call `notify_user` with the proposed `docs/features/feature-list.md`.
+8.  **Wait**: Wait for "APPROVED: feature-list" or revision requests.
+9.  **Revision Loop**:
     *   If changes requested: Update draft, re-call `notify_user` (Preview), and Wait again.
     *   Repeat until APPROVED.
-6.  **Write**: Execute `write_to_file`.
+10. **Write**: Execute `write_to_file`.
 
 ---
 
